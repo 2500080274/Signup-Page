@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Signup Page</title>
+    <style>
+        body {
+            text-align: center;
+            font-family: Arial;
+            background-color: lightblue;
+            margin-top: 100px;
+        }
+
+        form {
+            background-color: white;
+            padding: 25px;
+            width: 300px;
+            margin: auto;
+            border-radius: 10px;
+        }
+
+        input {
+            padding: 10px;
+            width: 200px;
+        }
+
+        button {
+            padding: 10px 20px;
+            background-color: blue;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: darkblue;
+        }
+
+        #msg {
+            color: green;
+        }
+    </style>
+</head>
+<body>
+    <h2>Signup Form</h2>
+
+    <form id="signupForm">
+        <input type="text" id="name" placeholder="Name"><br><br>
+        <input type="email" id="email" placeholder="Email"><br><br>
+        <input type="password" id="password" placeholder="Password"><br><br>
+        <button type="submit">Signup</button>
+    </form>
+
+    <p id="msg"></p>
+
+    <script>
+        document.getElementById("signupForm").addEventListener("submit", function(e) {
+            e.preventDefault();
+
+            let name = document.getElementById("name").value;
+            let email = document.getElementById("email").value;
+            let password = document.getElementById("password").value;
+
+            if (name && email && password) {
+                localStorage.setItem("name", name);
+                localStorage.setItem("email", email);
+                localStorage.setItem("password", password);
+                document.getElementById("msg").innerText = "Signup Successful";
+            } else {
+                document.getElementById("msg").innerText = "Please fill all fields";
+            }
+        });
+    </script>
+</body>
+</html>
